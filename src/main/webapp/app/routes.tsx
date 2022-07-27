@@ -1,6 +1,8 @@
 import React from 'react';
-import { Switch, useLocation } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import Loadable from 'react-loadable';
+
+// import { Route, Redirect, RouteProps } from 'react-router-dom';
 
 import Login from 'app/modules/login/login';
 import Register from 'app/modules/account/register/register';
@@ -15,6 +17,8 @@ import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 import PageNotFound from 'app/shared/error/page-not-found';
 import { AUTHORITIES } from 'app/config/constants';
 import { sendActivity } from 'app/config/websocket-middleware';
+import TestPage from 'app/marketplace/entities/test-page/testPage';
+import MarketPlaceRoutes from 'app/marketplace/entities/routes';
 
 const loading = <div>loading ...</div>;
 
@@ -36,6 +40,8 @@ const Routes = () => {
   return (
     <div className="view-routes">
       <Switch>
+        <Route path={'/marketplace'} component={MarketPlaceRoutes} />
+        <ErrorBoundaryRoute path={'/testpage'} component={TestPage} />
         <ErrorBoundaryRoute path="/login" component={Login} />
         <ErrorBoundaryRoute path="/logout" component={Logout} />
         <ErrorBoundaryRoute path="/account/register" component={Register} />
