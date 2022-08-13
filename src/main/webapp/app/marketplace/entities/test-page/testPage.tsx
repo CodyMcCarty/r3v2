@@ -92,7 +92,7 @@ const TestPage = (props: RouteComponentProps<{ url: string }>) => {
       This is the test page
       <h2>Test Page</h2>
       {productList.map((product, i) => (
-        <div key={`entity-${i}`}>
+        <div key={`product-${i}`}>
           <h5>{product.name}</h5>
           <p>{product.description}</p>
           <br />
