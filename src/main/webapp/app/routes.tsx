@@ -17,8 +17,9 @@ import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 import PageNotFound from 'app/shared/error/page-not-found';
 import { AUTHORITIES } from 'app/config/constants';
 import { sendActivity } from 'app/config/websocket-middleware';
-import TestPage from 'app/marketplace/entities/test-page/testPage';
+// import TestPage from 'app/marketplace/entities/test-page/testPage';
 import MarketPlaceRoutes from 'app/marketplace/entities/routes';
+import HomePage from 'app/marketplace/modules/home-page/homePage';
 
 const loading = <div>loading ...</div>;
 
@@ -41,7 +42,6 @@ const Routes = () => {
     <div className="view-routes">
       <Switch>
         <Route path={'/marketplace'} component={MarketPlaceRoutes} />
-        <ErrorBoundaryRoute path={'/testpage'} component={TestPage} />
         <ErrorBoundaryRoute path="/login" component={Login} />
         <ErrorBoundaryRoute path="/logout" component={Logout} />
         <ErrorBoundaryRoute path="/account/register" component={Register} />
@@ -50,6 +50,7 @@ const Routes = () => {
         <ErrorBoundaryRoute path="/account/reset/finish/:key?" component={PasswordResetFinish} />
         <PrivateRoute path="/admin" component={Admin} hasAnyAuthorities={[AUTHORITIES.ADMIN]} />
         <PrivateRoute path="/account" component={Account} hasAnyAuthorities={[AUTHORITIES.ADMIN, AUTHORITIES.USER]} />
+        <ErrorBoundaryRoute path="/" exact component={HomePage} />
         <ErrorBoundaryRoute path="/" exact component={Home} />
         <PrivateRoute path="/" component={EntitiesRoutes} hasAnyAuthorities={[AUTHORITIES.USER]} />
         <ErrorBoundaryRoute component={PageNotFound} />
