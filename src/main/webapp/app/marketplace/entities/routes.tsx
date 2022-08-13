@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
 
 // import Product from './product';
@@ -11,7 +11,7 @@ export default ({ match }) => {
     <div>
       <Switch>
         {/* prettier-ignore */}
-        <ErrorBoundaryRoute path={`${match.url}/testpage`} component={TestPage} />
+        <Route path={`${match.url}/testpage`} component={TestPage} />
         {/* You will add routes here */}
       </Switch>
     </div>
