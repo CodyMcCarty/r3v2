@@ -9,6 +9,14 @@ key={`${type}-${i}`}
                               &nbsp;
                             </a>
                           ) : null}
+style={{ maxWidth: '50vw', display: "block", width: '100%', height: 'auto' }}
+.card-body-container p{
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow : hidden;
+    word-break: break-all;
+}
  */
 
 const ProductCard = ({ product }) => (
@@ -16,18 +24,28 @@ const ProductCard = ({ product }) => (
     <CardImg
       alt={`${product.name}-Image`}
       src={`data:${product.imageContentType};base64,${product.image}`}
-      top
-      height={'150'}
+      style={{ objectFit: 'scale-down' }}
+      height="150vw"
       width="100%"
+      top
     />
-    <CardBody>
-      <CardTitle tag="h5">{product.name}</CardTitle>
-      <CardSubtitle className="mb-2 text-muted" tag="h6">
-        Card subtitle
-      </CardSubtitle>
-      <CardText>{product.description}</CardText>
-      <Button>Button</Button>
-    </CardBody>
+    <CardTitle
+      tag="h6"
+      style={{
+        lineClamp: 2,
+        overflow: 'hidden',
+        wordBreak: 'break-all',
+        display: '-webkit-box',
+        boxOrient: 'vertical',
+        whiteSpace: 'normal',
+      }}
+    >
+      {product.name}
+    </CardTitle>
+    <CardSubtitle className="mb-2 text-muted" tag="h6">
+      rating
+    </CardSubtitle>
+    <CardText>${product.price}</CardText>
   </Card>
 );
 

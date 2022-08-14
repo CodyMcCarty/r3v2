@@ -22,7 +22,7 @@ const HomePage = (props: RouteComponentProps<{ url: string }>) => {
   const links = useAppSelector(state => state.product.links);
   const entity = useAppSelector(state => state.product.entity);
   const updateSuccess = useAppSelector(state => state.product.updateSuccess);
-  const numProducts = 4;
+  const cardsPerCardGroup = 6;
 
   const getAllEntities = () => {
     dispatch(
@@ -105,7 +105,9 @@ const HomePage = (props: RouteComponentProps<{ url: string }>) => {
       <h3>
         Newest products <a>See More</a>{' '}
       </h3>
-      <CardGroup>{productList.map((product, i) => i < numProducts && <ProductCard key={`newest-${i}`} product={product} />)}</CardGroup>
+      <CardGroup>
+        {productList.map((product, i) => i < cardsPerCardGroup && <ProductCard key={`newest-${i}`} product={product} />)}
+      </CardGroup>
     </Container>
   );
 };
